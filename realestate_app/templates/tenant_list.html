@@ -1,0 +1,56 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <style>
+    .tenant-list {
+      padding: 20px;
+    }
+
+    .tenant-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .tenant-card {
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 15px;
+      width: calc(33.33% - 20px);
+      box-sizing: border-box;
+    }
+
+    .tenant-card h3 {
+      margin-top: 0;
+    }
+
+    .tenant-card p {
+      margin-bottom: 0;
+    }
+
+    .tenant-card a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .tenant-card a:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+  <div class="tenant-list">
+    <h2>Tenant List</h2>
+
+    <div class="tenant-cards">
+      {% for tenant in tenants %}
+      <div class="tenant-card">
+        <h3>{{ tenant.username }}</h3>
+        <p><a href="{% url 'tenant_profile' tenant.id %}">View Profile</a></p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
+
